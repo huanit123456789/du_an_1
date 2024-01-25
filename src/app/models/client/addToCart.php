@@ -1,0 +1,41 @@
+<?php
+    session_start();
+
+
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        // LAY DUU LIEU DUOC DAY TU AJAX
+
+        $id_bt = $_POST["id_bt"];
+        $soluong = $_POST["soluong"];
+
+        // KIEM TRA XEM LOAI SAN PHAM NAY DA CO TRONG GIO HANG HAY CHUA
+        // NEU CO ROI THI CONG SO LuOG CHUA CO THI THEM MOI VAO GIO HANG
+
+
+        // Tìm vị trí của sản phẩm trong giỏ hàng theo  id_bt
+        // tra ve 1 mang khong thi tra  ve false
+        $index = array_search($id_bt,array_column($_SESSION["cart"],"id_bt"));
+
+
+
+        // Nếu bien the đã tồn tại trong giỏ hàng
+        if ($index !== false) {
+            // Xử lý tình huống khi sản phẩm đã tồn tại
+            // Ví dụ: Tăng số lượng sản phẩm hoặc thực hiện hành động khác
+            
+            $_SESSION["cart"][$index]["soluong"] += $soluong;
+
+        //  VÀ KHÔNG TỒN TẠI THÌ SẼ THÊM MỚI
+        } else{
+            $temp = array(
+                "id_bt" => $id_bt,
+                "soluong" => $soluong
+            );
+            $_SESSION["cart"][] = $temp;
+        }
+        
+
+
+        echo count($_SESSION["cart"]);
+    }
+?>

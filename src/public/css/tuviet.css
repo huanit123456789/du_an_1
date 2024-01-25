@@ -1,0 +1,62 @@
+.error {
+  color: red;
+  font-size: 80%;
+}
+
+div>.error:hover{
+  color: red;
+}
+
+/* ======================SPCT=========================== */
+.dis {
+  user-select: none;
+  /* Ngăn chọn văn bản */
+  pointer-events: none;
+  /* Ngăn tương tác */
+  background-color: yellow;
+}
+
+
+/* ============= KHUYEN MAI ================ */
+.voucher-container {
+  padding: 20px;
+}
+
+.voucher {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  padding: 15px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
+
+.voucher:hover {
+  transform: scale(1.05);
+}
+
+.voucher h2 {
+  color: #721c24;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.voucher p {
+  color: #721c24;
+  font-size: 1rem;
+  margin: 0;
+
+}
+
+.voucher::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom right, #f8d7da, #e3ebff);
+  z-index: -1;
+}
